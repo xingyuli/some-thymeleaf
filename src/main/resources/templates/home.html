@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Good Thyme Virtual Grocery</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </head>
+    <body>
+        <!--
+            Parameters are specified according to the java.text.MessageFormat standard syntax, which means you could
+            add format to numbers and dates as specified in the API docs for that class.
+        -->
+        <p th:text="#{home.welcome(${user.name})}">Welcome to our grocery store!</p>
+
+        <!-- Will produce 'http://localhost:8080/order/details?orderId=3' -->
+        <a href="details.html" th:href="@{http://localhost:8080/order/details(orderId=${o.id})}">view</a>
+
+        <!-- Will produce 'http://localhost:8080/order/3/details' -->
+        <a href="details.html" th:href="@{http://localhost:8080/order/{orderId}/details(orderId=${o.id})}">view</a>
+
+        <!--
+            Literal substitutions allow the easy formatting of strings containing values from variables without the
+            need to append literals with '...' + '...'.
+
+            Note: only variable expressions(${...}) are allowed in side |...| literal substitutions. No other
+            literals('...'), boolean/numeric tokens, conditional expressions etc.
+        -->
+        <span th:text="|Welcome to our application, ${user.name}!|"></span>
+    </body>
+</html>

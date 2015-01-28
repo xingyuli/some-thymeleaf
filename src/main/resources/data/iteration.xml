@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<users xmlns:th="http://www.thymeleaf.org">
+    <user th:each="user : ${users}">
+        <name th:text="${user.name}"></name>
+    </user>
+</users>
